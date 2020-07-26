@@ -11,12 +11,9 @@ namespace DataStructures
 
     public class DoublyLinkedList<T> : IEnumerable<T>
     {
-
         public int Count { get; private set; }
         public ListNode<T> Head { get; set; }
         public ListNode<T> Tail { get; set; }
-
-
 
         public void AddFirst(T element)
         {
