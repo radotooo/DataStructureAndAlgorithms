@@ -1,8 +1,10 @@
-﻿using System;
+﻿
+using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
@@ -15,12 +17,15 @@ namespace DataStructures
         {
 
 
+            var stack = new ArrayStack<int>();
 
-            var linkedList = new LinkedList<int>();
-            linkedList.AddFirst(1);
-            linkedList.AddFirst(1);
-            linkedList.AddFirst(1);
-            Console.WriteLine(string.Join(",", linkedList));
+            var queue = new CircularQueue<string>();
+           
+
+            Console.WriteLine(string.Join(" ", stack.ToArray()));
+
+
+
 
 
 

@@ -12,19 +12,19 @@ namespace DataStructures
     public class DoublyLinkedList<T> : IEnumerable<T>
     {
         public int Count { get; private set; }
-        public ListNode<T> Head { get; set; }
-        public ListNode<T> Tail { get; set; }
+        public DoublyListNode<T> Head { get; set; }
+        public DoublyListNode<T> Tail { get; set; }
 
         public void AddFirst(T element)
         {
 
             if (this.Count == 0)
             {
-                this.Head = this.Tail = new ListNode<T>(element);
+                this.Head = this.Tail = new DoublyListNode<T>(element);
             }
             else
             {
-                var newHead = new ListNode<T>(element);
+                var newHead = new DoublyListNode<T>(element);
                 newHead.Next = this.Head;
                 this.Head.Previous = newHead;
                 this.Head = newHead;
@@ -37,11 +37,11 @@ namespace DataStructures
         {
             if (this.Count == 0)
             {
-                this.Head = this.Tail = new ListNode<T>(element);
+                this.Head = this.Tail = new DoublyListNode<T>(element);
             }
             else
             {
-                var newHead = new ListNode<T>(element);
+                var newHead = new DoublyListNode<T>(element);
                 newHead.Previous = this.Tail;
                 this.Tail.Next = newHead;
                 this.Tail = newHead;

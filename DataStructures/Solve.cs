@@ -72,5 +72,8 @@ namespace DataStructures
             Console.WriteLine(string.Join(" ", input));
         }
 
+        //	Reverse Numbers with a Stack
+       
+
     }
 }

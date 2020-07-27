@@ -277,8 +277,72 @@ namespace LeetCode
             {
                 return (int)(new TimeSpan(h, m, s)).TotalMilliseconds;
             }
-            #endregion
+        #endregion
+        public static void Map()
+        {
+            var a = int.Parse(Console.ReadLine());
+            var map = new Dictionary<string, string>();
+            for (int i = 0; i < a; i++)
+            {
+                var input = Console.ReadLine().Split();
+
+                map[input[0]] = input[1];
+            }
+            string queryKey;
+            while ((queryKey = Console.ReadLine()) != null)
+            {
+                if (map.ContainsKey(queryKey))
+                {
+                    Console.WriteLine("{0}={1}", queryKey, map[queryKey]);
+                }
+                else
+                {
+                    Console.WriteLine("Not found");
+                }
+
+
+            }
+
 
         }
+        public static int CountBits(int n)
+        {
+            return Convert.ToString(n, 2).ToArray().Count(x => x == 1);
+        }
+
+        static void Binary(int n)
+        {
+            string binaryNum = Convert.ToString(n, 2);
+            var result = Regex.Matches(binaryNum, @"(1)*").OfType<Match>().Select(match => match.Value).OrderByDescending(length => length).ToArray()[0].Count();
+
+            Console.WriteLine(result);
+
+        }
+        static void ShiftMatrix(int[,] matrix)
+        {
+            var size = matrix.GetLength(0);
+            var result = new int[size, size];
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int g = 0; g < matrix.GetLength(1); g++)
+                {
+
+                    result[g, matrix.GetLength(0) - 1 - i] = matrix[i, g];
+                }
+            }
+
+            for (int i = 0; i < result.GetLength(0); i++)
+            {
+
+                for (int h = 0; h < result.GetLength(1); h++)
+                {
+                    Console.Write(result[i, h]);
+                }
+                Console.WriteLine();
+
+            }
+        }
+    }
     }
 
