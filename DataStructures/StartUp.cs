@@ -17,12 +17,18 @@ namespace DataStructures
         {
 
 
-            var stack = new ArrayStack<int>();
+            var tree = new Tree<int>(5, new Tree<int>(6),
+                                        new Tree<int>(7),
+                                        new Tree<int>(9, new Tree<int>(90),
+                                                         new Tree<int>(100)),
+                                       new Tree<int>(10)
+                                       );
+            Console.WriteLine(string.Join(" ", tree.OrderBFS()));
+            Console.WriteLine(string.Join(" ", tree.OrderDFS()));
 
-            var queue = new CircularQueue<string>();
-           
 
-            Console.WriteLine(string.Join(" ", stack.ToArray()));
+
+
 
 
 
