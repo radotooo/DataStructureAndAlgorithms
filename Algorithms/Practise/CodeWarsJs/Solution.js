@@ -172,36 +172,36 @@ function halvingSum(n) {
 }
 //console.log(halvingSum(25));
 let sum = 0;
-var fib = function(N) {
-    if(N<=1){
+var fib = function (N) {
+    if (N <= 1) {
         return 1;
     }
-    
 
-return fib(N-1) + fib(N-2)
+
+    return fib(N - 1) + fib(N - 2)
 
 
 };
-var fib2 = function(N) {
-    if(N < 1 ){
+var fib2 = function (N) {
+    if (N < 1) {
         return n;
     }
-    if(N===2){
+    if (N === 2) {
         return 1;
     }
 
-    let sum = 0 ;
+    let sum = 0;
     let result = [];
-    let previous= 1;
+    let previous = 1;
     let next = 1;
     for (let i = 3; i <= N; i++) {
-        
-        
+
+
         sum = previous + next;
         previous = next
         next = sum;
         result.push(sum)
-       
+
     }
     return result.join(",")
 
@@ -209,5 +209,21 @@ var fib2 = function(N) {
 //!Regex Password Validation
 function validate(password) {
     return /(put answer here)/.test(password);
-  }
-console.log(1);
+}
+let b = {};
+
+function findOdd(A) {
+    let bc = A.reduce((a, b) => {
+        if (a[b] === undefined) {
+            a[b] = 1;
+        }
+        else {
+            a[b] += 1;
+        }
+        return a;
+    }, {});
+
+    console.log(bc);
+    
+}
+findOdd([1, 2, 3, 4, 5, 6, 6, 6]);
