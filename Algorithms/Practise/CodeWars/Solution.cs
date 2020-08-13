@@ -188,5 +188,76 @@ namespace CodeWars
         {
             return s.Substring(0, 1);
         }
+        //Help the bookSeller!
+
+        public static string StockSummary(string[] lstOfArt, String[] lstOf1stLetter)
+        {
+
+            var booksWithQunatity = lstOfArt.Select(x => x.Split(" ")).ToDictionary(c => c[0], c => c[1]);
+            var result = lstOf1stLetter.ToDictionary(x => x, value => 0);
+
+            foreach (var book in booksWithQunatity)
+            {
+                if (result.ContainsKey(book.Key[0].ToString()))
+                {
+                    result[book.Key[0].ToString()] += int.Parse(book.Value);
+                }
+            }
+            var chekIfNoBooks = result.Where(x => x.Value != 0).ToList();
+            if (chekIfNoBooks.Count == 0)
+            {
+                return string.Empty;
+            }
+
+            var output = result.Select(x => $"({x.Key} : {x.Value})").ToList();
+
+            return string.Join(" - ", output);
+
+        }
+        //best
+        //public static string stockSummary(string[] lstOfArt, string[] lstOf1stLetter)
+        //{
+        //    if (!lstOfArt.Any()) return "";
+        //    return string.Join(" - ",
+        //      lstOf1stLetter.Select(c => string.Format("({0} : {1})", c,
+        //        lstOfArt.Where(a => a[0] == c[0]).Sum(a => int.Parse(a.Split(' ')[1])))));
+        //}
+
+        //!parseInt() reloaded
+
+        public static int ParseInt(string s)
+        {
+          var text = s.Split().ToArray();
+          
+            var numbers = new Dictionary<string,int>(){
+                {"zero",0},{"one",1},{"two",2},{"three",3},
+                {"four",4},{"five",5},{"six",6},
+                {"seven",7},{"eight",8},{"nine",9},{"ten",10},
+                 {"eleven",11},{"twelve",12},{"thirteen",13},
+                {"fourteen",14},{"fifteen",15},{"sixteen",16},
+                {"seventeen",17},{"eighteen",18},{"nineteen",19},
+                 {"twenty",20},{"thirty",30},{"forty",40},
+                {"fifty",50},{"sixty",60},{"seventy",70},
+                {"eighty",80},{"ninety",90}
+
+            };
+            
+            var result = new List<int>();
+            foreach (var item in text)
+            {
+                if(item.Contains("-")){
+                   var words = item.Split("-");
+                  result.Add(numbers[words[0]]+numbers[words[1]]);
+                }
+                if(numbers.ContainsKey(item)){
+                        result.Add(numbers[item]);
+                }
+            }
+           
+
+           
+           return int.Parse(string.Join("",result));
+        }
+
     }
 }
