@@ -16,7 +16,7 @@ namespace DataStructures
         static void Main(string[] args)
         {
 
-            var btsTree = new BinarySearchTree<int>();
+            var btsTree = new BinarySearchTreeExtend<int>();
             btsTree.Insert(10);
             btsTree.Insert(15);
             btsTree.Insert(7);
@@ -50,15 +50,6 @@ namespace DataStructures
             //tree.Print();
             //Console.WriteLine(string.Join(" ", tree.OrderBFS()));
             //Console.WriteLine(string.Join(" ", tree.OrderDFS()));
-
-
-
-
-
-
-
-
-
 
 
 
