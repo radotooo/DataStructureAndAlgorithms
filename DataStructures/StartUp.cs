@@ -15,25 +15,27 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
+            var arr = new int[] { 50, 40, 30, 20, 25,10,80,325,324,222};
+            Heap<int>.Sort(arr);
+            Console.WriteLine(string.Join(",", arr));
+            //var btsTree = new BinarySearchTreeExtend<int>();
+            //btsTree.Insert(10);
+            //btsTree.Insert(15);
+            //btsTree.Insert(7);
+            //btsTree.Insert(4);
+            //btsTree.Insert(30);
+            //btsTree.Insert(16);
+            //btsTree.Insert(17);
+            //btsTree.Insert(14);
 
-            var btsTree = new BinarySearchTreeExtend<int>();
-            btsTree.Insert(10);
-            btsTree.Insert(15);
-            btsTree.Insert(7);
-            btsTree.Insert(4);
-            btsTree.Insert(30);
-            btsTree.Insert(16);
-            btsTree.Insert(17);
-            btsTree.Insert(14);
 
+            //btsTree.Insert(18);
 
-            btsTree.Insert(18);
-
-            btsTree.Insert(22);
-            btsTree.Insert(28);
-            btsTree.Insert(12);
-            btsTree.Insert(35);
-            btsTree.Insert(45);
+            //btsTree.Insert(22);
+            //btsTree.Insert(28);
+            //btsTree.Insert(12);
+            //btsTree.Insert(35);
+            //btsTree.Insert(45);
 
 
 
