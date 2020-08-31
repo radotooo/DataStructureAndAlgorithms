@@ -225,67 +225,67 @@ function findOdd(A) {
     }, {});
 
     console.log(bc);
-    
+
 }
 
 //! Convert a linked list to a string
 class Node {
     constructor(data, next = null) {
-      this.data = data;
-      this.next = next;
+        this.data = data;
+        this.next = next;
     }
-  }
+}
 
-  function stringify(list) {
+function stringify(list) {
 
     let result = [];
-    GetAllElementsFromLinkedList(list,result);
-    
-    if(result.length === 1){
-       return "null";
+    GetAllElementsFromLinkedList(list, result);
+
+    if (result.length === 1) {
+        return "null";
     }
-    else{
+    else {
         return result.join(" -> ");
     }
-  };
+};
 
-  function GetAllElementsFromLinkedList(linkedList,result){
-      if(linkedList === null ){
-          result.push("null")
-          return;
-      }
-      if(linkedList.data != undefined){
-          result.push(linkedList.data)
-      }
-      GetAllElementsFromLinkedList(linkedList.next,result)
-  };
+function GetAllElementsFromLinkedList(linkedList, result) {
+    if (linkedList === null) {
+        result.push("null")
+        return;
+    }
+    if (linkedList.data != undefined) {
+        result.push(linkedList.data)
+    }
+    GetAllElementsFromLinkedList(linkedList.next, result)
+};
 
-  //*best
- //  function stringify2(list) {
- //      return list === null ? "null" : `${list.data} -> ${stringify(list.next)}`; 
- //     }
- 
+//*best
+//  function stringify2(list) {
+//      return list === null ? "null" : `${list.data} -> ${stringify(list.next)}`; 
+//     }
+
 
 //!Simple max digit sum
-function MaxDigitSum(n){
-//   if(n<=9){
-//       return n;
-//   }
-//   if(n==10){
-//       return 9;
-//   }
-   let maxSum = 0;
-   let result=0;
-for (let index = n; index <= n; index++) {
-  
-  let elementsSum = index.toString().split('').map(Number).reduce((a,b)=>a+b,0);
- 
-  if(elementsSum >= maxSum){
-      maxSum = elementsSum;
-        result = index;
-  }
+function MaxDigitSum(n) {
+    //   if(n<=9){
+    //       return n;
+    //   }
+    //   if(n==10){
+    //       return 9;
+    //   }
+    let maxSum = 0;
+    let result = 0;
+    for (let index = n; index <= n; index++) {
+
+        let elementsSum = index.toString().split('').map(Number).reduce((a, b) => a + b, 0);
+
+        if (elementsSum >= maxSum) {
+            maxSum = elementsSum;
+            result = index;
+        }
     }
-   return result;
+    return result;
 }
 //*best
 // var sum=(x)=>[...x].reduce((a,b)=>+a + +b)
@@ -296,4 +296,26 @@ for (let index = n; index <= n; index++) {
 //     let num = s.slice(0,i).join``+'9'.repeat(s.slice(i).length)
 //     return sum(num)>sum(''+n)?+num:n
 // }
-console.log(MaxDigitSum(12));
+
+//!Sum of pairs
+
+function sumOFPairs0n(ints, s) {
+
+    let resultList = {};
+
+
+    for (let i = 0; i < ints.length; i++) {
+
+        if (resultList.hasOwnProperty(s - ints[i])) {
+            return [resultList[s - ints[i]], ints[i]];
+        }
+        resultList[ints[i]] = ints[i];
+
+    }
+
+}
+
+
+console.log(sumOFPairs0n([5], 10));
+
+
