@@ -315,7 +315,26 @@ function sumOFPairs0n(ints, s) {
 
 }
 
+//! Array Helpers
+Array.prototype.square = function () { return this.map(x => x * x) };
+Array.prototype.cube = function () { return this.map(x => x * x * x) };
+Array.prototype.average = function () {
+    if (this === undefined || this.length == 0) {
+        return NaN
+    }
+    console.log(this.reduce((a, b) => (a + b)))
+    return this.reduce((a, b) => (a + b)) / this.length;
+}
+Array.prototype.sum = function () { return this.reduce((a, b) => (a + b)) };
+Array.prototype.even = function () { return this.filter(x => x % 2 == 0);}
+Array.prototype.odd = function () { return this.filter(x => x % 2 == 1);}
 
-console.log(sumOFPairs0n([5], 10));
+
+
+
+
+
+
+
 
 
