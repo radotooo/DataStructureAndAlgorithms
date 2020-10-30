@@ -1,7 +1,7 @@
 
 //!Jaden Casing Strings
 
-const { reporters } = require("mocha");
+// const { reporters } = require("mocha");
 
 //
 String.prototype.toJadenCase = function () {
@@ -326,10 +326,31 @@ Array.prototype.average = function () {
     return this.reduce((a, b) => (a + b)) / this.length;
 }
 Array.prototype.sum = function () { return this.reduce((a, b) => (a + b)) };
-Array.prototype.even = function () { return this.filter(x => x % 2 == 0);}
-Array.prototype.odd = function () { return this.filter(x => x % 2 == 1);}
+Array.prototype.even = function () { return this.filter(x => x % 2 == 0); }
+Array.prototype.odd = function () { return this.filter(x => x % 2 == 1); }
 
+//Interview task generate excel column name from index 
 
+function ColumnNameSolve(num) {
+
+    let columnName = '';
+
+    while (num > 0) {
+
+        let rem = num % 26;
+
+        if (rem == 0) {
+            columnname += "z";
+            num = (num / 26) - 1;
+        }
+        else {
+            columnName += String.fromCharCode((rem - 1) + 65);
+            num = Math.floor((num / 26));
+        }
+    }
+    return columnName.split("").reverse().join("");
+}
+console.log(ColumnNameSolve(27));
 
 
 
