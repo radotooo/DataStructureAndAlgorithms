@@ -227,9 +227,9 @@ namespace CodeWars
 
         public static int ParseInt(string s)
         {
-          var text = s.Split().ToArray();
-          
-            var numbers = new Dictionary<string,int>(){
+            var text = s.Split().ToArray();
+
+            var numbers = new Dictionary<string, int>(){
                 {"zero",0},{"one",1},{"two",2},{"three",3},
                 {"four",4},{"five",5},{"six",6},
                 {"seven",7},{"eight",8},{"nine",9},{"ten",10},
@@ -241,22 +241,67 @@ namespace CodeWars
                 {"eighty",80},{"ninety",90}
 
             };
-            
+
             var result = new List<int>();
             foreach (var item in text)
             {
-                if(item.Contains("-")){
-                   var words = item.Split("-");
-                  result.Add(numbers[words[0]]+numbers[words[1]]);
+                if (item.Contains("-"))
+                {
+                    var words = item.Split("-");
+                    result.Add(numbers[words[0]] + numbers[words[1]]);
                 }
-                if(numbers.ContainsKey(item)){
-                        result.Add(numbers[item]);
+                if (numbers.ContainsKey(item))
+                {
+                    result.Add(numbers[item]);
                 }
             }
-           
 
-           
-           return int.Parse(string.Join("",result));
+
+
+            return int.Parse(string.Join("", result));
+        }
+        //Scale Focus task
+        public static List<string> FetchItemsToDisplay(List<List<string>> items, int sortParameter, int sortOrder, int itemsPerPage, int pageNumber)
+        {
+            var result = new Dictionary<int, List<string>>();
+            int index = 0;
+            int itemsAddedtoPage = 0;
+            int page = 0;
+
+            if (sortOrder == 0)
+            {
+                items = items.OrderBy(x => x[sortParameter]).ToList();
+            }
+            else
+            {
+                items = items.OrderByDescending(x => x[sortParameter]).ToList();
+
+            }
+
+            while (index < items.Count())
+            {
+
+                if (itemsAddedtoPage < itemsPerPage)
+                {
+                    if (!result.ContainsKey(page))
+                    {
+                        result[page] = new List<string>();
+                    }
+                    result[page].Add(items[index][0]);
+                    itemsAddedtoPage++;
+                }
+                else
+                {
+                    page++;
+                    itemsAddedtoPage = 0;
+                    index--;
+                }
+
+                index++;
+            }
+
+            return result[pageNumber];
+
         }
 
     }
