@@ -412,6 +412,111 @@ function autocomplete(input, dictionary) {
 //best
 // const autocomplete = (input, dictionary) => dictionary.filter(w => w.toLowerCase().startsWith(input.replace(/[^A-Z]/gi,''))).slice(0,5);
 
+function fourLetters(names) {
+  let gg = names.split(' ');
+  console.log(gg);
+  return names.split(' ').filter((x) => x.length === 4).length;
+}
+
+function fourLettersArr(array) {
+  let frequency = array.reduce((a, b) => {
+    if (a[b]) {
+      a[b]++;
+    } else {
+      a[b] = 1;
+    }
+    return a;
+  }, {});
+
+  let a = Object.entries(frequency);
+  a = a.sort((a, b) => {
+    return b[1] - a[1] || a[0] - b[0];
+  });
+
+  let result = [];
+  for (let index = 0; index < a.length; index++) {
+    for (let c = 0; c < a[index][1]; c++) {
+      result.push(Number(a[index][0]));
+    }
+  }
+  console.log(result);
+}
+
+function longestSubstring(test) {
+  let letters = [];
+  let hightScore = 0;
+
+  [...test].map((b) => {
+    if (!letters.includes(b)) {
+      letters.push(b);
+    } else {
+      letters.length > hightScore ? (hightScore = letters.length) : '';
+      letters = [];
+    }
+  });
+
+  return hightScore;
+}
+
+function getResult(nums) {
+  return nums
+    .sort((a, b) => {
+      console.log(b + '' + a);
+      console.log('middle');
+      console.log(a + '' + b);
+      console.log(nums);
+      return b + '' + a - (a + '' + b);
+    })
+    .join('');
+}
+
+function getNumberOfRepetitions(s) {
+  if (s === '') return 0;
+  return s.match(/(.)\1*/g).sort((a, b) => b.length - a.length)[0].length;
+}
+
+function closestSum(nums, target) {
+  nums.sort((a, b) => a - b);
+  let closest = null;
+
+  for (let i = 0; i < nums.length; i++) {
+    let low = i + 1;
+    let high = nums.length - 1;
+
+    while (low < high) {
+      const sum = nums[i] + nums[low] + nums[high];
+      const myDiff = Math.abs(target - sum);
+      const currDiff = Math.abs(target - closest);
+
+      if (myDiff < currDiff || closest === null) {
+        closest = sum;
+      }
+
+      if (sum === target) {
+        return sum;
+      } else if (sum < target) {
+        low++;
+      } else {
+        high--;
+      }
+    }
+    while (nums[i] === nums[i + 1]) i++;
+  }
+  return closest;
+}
+
+function applyBackspaces(s) {
+  let result = [];
+  [...s].map((a) => {
+    if (a === '$') {
+      result.pop();
+    } else {
+      result.push(a);
+    }
+  });
+  return result.join('');
+}
+
 console.log(
   autocomplete('ai', [
     'airplane',
