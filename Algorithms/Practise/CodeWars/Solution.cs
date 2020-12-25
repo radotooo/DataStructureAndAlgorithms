@@ -304,5 +304,134 @@ namespace CodeWars
 
         }
 
+
+        public static string BreakCamelCase(string str)
+        {
+            return string.Concat(str.Select(x => char.IsUpper(x) ? " " + x.ToString() : x.ToString()));
+        }
+
+        public static int[] MenFromBoys(int[] a)
+        {
+            var even = new List<int>();
+            var odd = new List<int>();
+            Func<int, int> metod = (a) => Gg(a);
+            System.Console.WriteLine();
+            Action<int> action = (b) => System.Console.WriteLine(b); ;
+            a.Aggregate((a, b) =>
+            {
+                if (b % 2 == 0)
+                {
+                    even.Add(b);
+                }
+                else
+                {
+
+
+                }
+                return a;
+            });
+
+            return null;
+        }
+
+        public static int Gg(int a)
+        {
+            return a;
+        }
+
+
+        public static int[] DeleteNth(int[] arr, int x)
+        {
+            var dic = new Dictionary<int, int>();
+            var list = new List<int>();
+
+            return arr.Aggregate(new List<int>(), (a, b) =>
+              {
+                  if (!dic.ContainsKey(b))
+                  {
+                      dic[b] = 0;
+                  }
+                  else
+                  {
+                      dic[b]++;
+                  }
+                  if (dic[b] < x)
+                  {
+                      a.Add(b);
+                  }
+                  return a;
+              }).ToArray();
+        }
+        // Linked Lists - Length & Count
+        public partial class Node
+        {
+            public int Data;
+            public Node Next;
+
+            public Node(int data)
+            {
+                this.Data = data;
+                this.Next = null;
+            }
+
+            public static int Length(Node head)
+            {
+                int lenght = 0;
+                while (head != null)
+                {
+                    lenght++;
+                    head = head.Next;
+                }
+                return lenght;
+            }
+
+            public static int Count(Node head, Predicate<int> func)
+            {
+                var count = 0;
+                while (head != null)
+                {
+                    if (func(head.Data))
+                    {
+                        count++;
+                    }
+                    head = head.Next;
+                }
+                return count;
+            }
+        }
+        public static int[] DataReverse(int[] data)
+        {
+
+            var result = new List<int[]>();
+
+            var values = data.ToList().GetRange(0, 8).ToArray();
+            result.Add(values);
+
+            for (var i = 9; i <= data.Length; i++)
+            {
+                if (i % 8 == 0)
+                {
+                    values = data.ToList().GetRange((i - 8), 8).ToArray();
+                    result.Add(values);
+                }
+            }
+
+            result.Reverse();
+
+            return result.Aggregate(new List<int>(), (a, b) =>
+            {
+                a.AddRange(b);
+                return a;
+            }).ToArray();
+        }
+        //! clever
+        //!     public static int[] DataReverse(int[] data) =>
+        //!   Enumerable.Range(0,data.Length/8)
+        //!     .Select(i => data
+        //!       .Skip(i*8)
+        //!       .Take(8))
+        //!     .Reverse()
+        //!     .SelectMany(i => i)
+        //!     .ToArray();
     }
 }
