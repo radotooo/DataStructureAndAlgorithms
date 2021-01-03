@@ -351,3 +351,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+Algorithms/Practise/HackerRank/.vscode/launch.json
+Algorithms/Practise/HackerRank/.vscode/tasks.json
+Algorithms/Practise/CodeWars/Node.js

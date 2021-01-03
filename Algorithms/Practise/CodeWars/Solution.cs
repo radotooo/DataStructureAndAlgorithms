@@ -308,6 +308,7 @@ namespace CodeWars
         public static string BreakCamelCase(string str)
         {
             return string.Concat(str.Select(x => char.IsUpper(x) ? " " + x.ToString() : x.ToString()));
+
         }
 
         public static int[] MenFromBoys(int[] a)
@@ -433,5 +434,38 @@ namespace CodeWars
         //!     .Reverse()
         //!     .SelectMany(i => i)
         //!     .ToArray();
+        public static (int, int)? IsPerfectPower(int n)
+        {
+            if (n <= 3 || n == 5)
+            {
+                return null;
+            }
+
+            for (var i = 2; i < n * n; i++)
+            {
+                for (var c = 2; c < 10; c++)
+                {
+                    if (n == Math.Pow(i, c))
+                    {
+                        return (i, c);
+                    }
+                }
+            }
+            return null;
+        }
+
+        public static int HighestRank(int[] arr)
+        {
+            return arr.GroupBy(x => x).OrderByDescending(x => x.Count()).ThenByDescending(x => x.Key).Select(x => x.Key).FirstOrDefault();
+        }
+        public static string Encrypt(string text, int n)
+        {
+            text = string.Concat(text.Where((c, i) => i % 2 == 1).Concat(text.Where((c, i) => i % 2 == 0)));
+            return text;
+        }
+
+
+
     }
 }
+
