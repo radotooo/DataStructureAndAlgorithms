@@ -516,20 +516,78 @@ function applyBackspaces(s) {
   });
   return result.join('');
 }
+function cache(func) {
+  let data = {};
+  if (Object.hasOwnProperty(func)) {
+    let resultOfFunc = func();
+    data[func] = resultOfFunc;
+    return resultOfFunc;
+  } else {
+    return data[func];
+  }
+}
 
-console.log(
-  autocomplete('ai', [
-    'airplane',
-    'airport',
-    'A$$I111pple',
-    'ball',
-    'a$%irport',
-    'airport',
-    'airport',
-    'airport',
-    'airport',
-  ])
-);
+function findOutlier(integers) {
+  let odd = integers.filter((x) => Math.abs(x % 2) === 0);
+  let even = integers.filter((x) => Math.abs(x % 2) === 1);
+
+  return even.length === 1 ? even[0] : odd[0];
+}
+
+var number = function (busStops) {
+  return busStops.reduce((a, b) => {
+    a += b[0];
+    a -= b[1];
+    return a;
+  }, 0);
+};
+
+function findShort(s) {
+  return Math.min(...s.map((x) => x.length));
+}
+
+// Simple Pig Latin
+function pigIt(str) {
+  return str
+    .split(' ')
+    .reduce((a, b) => {
+      b.match(/\w+/gm) ? (a += ' ' + b.slice(1) + b[0] + 'ay') : (a += ' ' + b);
+      return a;
+    }, '')
+    .trim();
+}
+//best
+//  function pigIt(str){
+//   return str.replace(/(\w)(\w*)(\s|$)/g, "\$2\$1ay\$3")
+// }
+
+function anagrams(word, words) {
+  let result = [];
+  let values = [...word];
+
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].length === word.length) {
+      for (let c = 0; c < words[i].length; c++) {
+        let letter = words[i][c];
+        if (values.includes(letter)) {
+          let indexOF = values.indexOf(letter);
+          values.splice(indexOF, 1);
+        }
+      }
+      if (values.length === 0) {
+        result.push(words[i]);
+      }
+
+      values = [...word];
+    }
+  }
+  return result;
+}
+//best
+// words.filter(w => w.split('').sort().join('') === word.split('').sort().join('')); .....
+console.log(anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']));
+console.log(anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']));
+console.log(anagrams('laser', ['lazing', 'lazy', 'lacer']));
 
 // ggg('aaaaaaaaAaaaaaaaaAa');
 
