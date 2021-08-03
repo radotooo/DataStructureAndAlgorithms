@@ -585,13 +585,33 @@ function anagrams(word, words) {
 }
 //best
 // words.filter(w => w.split('').sort().join('') === word.split('').sort().join('')); .....
-console.log(anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']));
-console.log(anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']));
-console.log(anagrams('laser', ['lazing', 'lazy', 'lacer']));
+  function largestPairSum(arr){
 
-// ggg('aaaaaaaaAaaaaaaaaAa');
+    let biggestNum = Number.NEGATIVE_INFINITY
+    for (let i = 0; i < arr.length; i++) {
+      for (let c = i+1; c < arr.length; c++) {
+        const num = arr[i] + arr[c]
+        if(num>biggestNum){
+          biggestNum = num
+        }
+      }
+    }
+    return biggestNum
+  }
+  
+  function getAverage(arr){
+    return arr.reduce((a,b) => a + b) / arr.length
+  }
 
-// module.exports = {
-//   twoSum,
-//   duplicateCount,
-// };
+  function filter_list(arr) {
+    return arr.filter(x => typeof(x) !== 'string' )
+  }
+
+  function monkeyCount(n) {
+    return Array.from(Array(n+1).keys()).slice(1)
+    }
+
+    function removeSmallest(numbers) {
+     numbers.splice(numbers.indexOf(Math.min(...numbers)), 1);
+      return numbers;
+    }
