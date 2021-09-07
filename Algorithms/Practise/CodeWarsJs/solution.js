@@ -615,3 +615,36 @@ function anagrams(word, words) {
      numbers.splice(numbers.indexOf(Math.min(...numbers)), 1);
       return numbers;
     }
+
+    var uniqueInOrder=function(iterable) {
+      return [...iterable].filter((a,index) => a !== iterable[index + 1]) 
+    }
+
+    function highAndLow(numbers){
+      const splitNumbers = numbers.split(' ')
+      
+      return `${Math.max(...splitNumbers)} ${Math.min(...splitNumbers)}`
+    }
+
+    function expandedForm(num) {
+      return num.toString().split('').reduce((arr, value, index, numbers) => {
+        if (value > 0) {
+          const result = `${ numbers[index] }${ '0'.repeat(numbers.length - 1 -index) }`
+          arr.push(result)
+        }
+
+        return arr
+      }, []).join(' + ')
+    }
+
+    function expandedForm2(num) {
+      return String(num)
+              .split("")
+              .map((num, index, arr) => num + "0".repeat(arr.length - index -1 ))
+              .filter((num) => Number(num) != 0)
+              .join(" + ")
+    }
+
+console.log(expandedForm(70304))
+console.log(expandedForm(42))
+console.log(expandedForm(12))
