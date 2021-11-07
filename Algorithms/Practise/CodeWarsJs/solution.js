@@ -645,6 +645,24 @@ function anagrams(word, words) {
               .join(" + ")
     }
 
-console.log(expandedForm(70304))
-console.log(expandedForm(42))
-console.log(expandedForm(12))
+    // Sort the odd
+    function sortArray(array) {
+      let index = -1
+      const oddNumbers = array.filter((x) =>  x % 2 ).sort((a,b) => a-b)
+      console.log(oddNumbers)
+      return array.map((x) => x % 2 ? oddNumbers.shift() : x);
+      // Return a sorted array.
+    }
+      
+    function sumStrings(a, b) { 
+     return (Number(a) + Number(b)).toString()
+    }
+
+    function multiply(a, b) {
+     return (BigInt(a) * BigInt(b)).toString().replace('/^0+/', '')
+    }
+
+console.log(multiply('10', '10'))
+// console.log(towerBuilder(11))
+// console.log(towerBuilder(5))
+// console.log(sortArray([]))
