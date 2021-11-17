@@ -126,5 +126,67 @@ var isPowerOfTwo = function (n) {
     return  Math.log2(n) % 1 === 0;
     };
 
-console.log(isPowerOfTwo(3));
-// console.log(numIdenticalPaires([1,2,3,1,1,3]))
+    // 1047. Remove All Adjacent Duplicates In String
+    /**
+ * @param {string} s
+ * @return {string}
+ */
+var removeDuplicates = function(s) {
+    // const stack = [];
+
+    // for(let i = 0; i < s.length; i++) {
+    //     if(stack[stack.length - 1] === s[i]) stack.pop()
+    //     else stack.push(s[i])
+    // }
+    // return stack.join('')
+    return match(s, /(\w)\1/gm)
+};
+
+const match = (s, regex) => {
+    if (!regex.test(s)) {
+        return s
+    }
+
+    return match(s.replace(regex, ''), regex)
+}
+
+// 1295. Find Numbers with Even Number of Digits
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var findNumbers = function(nums) {
+    return nums.reduce((acc, num) => {
+        if (`${num}`.length % 2 === 0) acc++
+        return acc
+    }, 0)
+};
+
+// 205. Isomorphic Strings
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+ var isIsomorphic = function(s, t) {
+    const sData = {};
+    const tData = {};
+
+    for(var i = 0; i < s.length; i++) {
+        charS = s[i]
+        charT = t[i]
+
+        sData[charS] || (sData[charS] = i)
+        tData[charT] || (tData[charT] = i)
+
+        if(sData[charS] !== tData[charT]) return false;
+    }
+    return true;
+};
+
+"bbbaaaba"
+"aaabbbba"
+console.log('rrrgge', 'cccaab', isIsomorphic('rrrgge', 'cccaab'));
+// console.log(isIsomorphic('abbba', 'cdddc'));
+// console.log(isIsomorphic('abbba', 'cdddd'));
