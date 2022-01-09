@@ -177,16 +177,63 @@ const match = (s, regex) => {
         charS = s[i]
         charT = t[i]
 
-        sData[charS] || (sData[charS] = i)
-        tData[charT] || (tData[charT] = i)
+    if (sData[charS] === undefined) sData[charS] = i
+    if (tData[charT] === undefined) tData[charT] = i
 
-        if(sData[charS] !== tData[charT]) return false;
+    if(sData[charS] !== tData[charT]) return false;
     }
     return true;
 };
 
-"bbbaaaba"
-"aaabbbba"
-console.log('rrrgge', 'cccaab', isIsomorphic('rrrgge', 'cccaab'));
+/**
+ * @param {string} a
+ * @param {string} b
+ * @return {string}
+ */
+ var addBinary = function(a, b) {
+   return (BigInt('0b'+a) + BigInt('0b'+b)).toString(2)
+ }
+
+ /**
+ * @param {number[]} gain
+ * @return {number}
+ */
+var largestAltitude = function(gain) {
+    return Math.max(...gain.reduce((acc, curr, i) => {
+        acc.push(acc[acc.length-1] + curr )
+        return acc
+        }, [0]))
+};
+
+/**
+ * @param {number} numBottles
+ * @param {number} numExchange
+ * @return {number}
+ */
+var numWaterBottles = function(numBottles, numExchange) {
+
+	let result = numBottles;
+
+	while (numBottles >= numExchange) {
+		const exchange = Math.floor(numBottles / numExchange);
+
+		result += exchange;
+		numBottles = exchange + (numBottles % numExchange);
+	}
+	return result;
+};
+
+console.log(numWaterBottles(9,3))
+    //  console.log(BigInt(0.1) + BigInt(0.2));
+// console.log(addBinary( 1010,1011))
+// "bbbaaaba"
+// "aaabbbba"
+// console.log('ad', 'aa', isIsomorphic('ad', 'aa'));
 // console.log(isIsomorphic('abbba', 'cdddc'));
 // console.log(isIsomorphic('abbba', 'cdddd'));
+
+// add and remvove event listeners
+// const launchKittyTrue = () => { this.launchKitty(true) };
+// fancyButton.addEventListener('click', launchKittyTrue, true);
+// // later:
+// fancyButton.removeEventListener('click', launchKittyTrue, true);
