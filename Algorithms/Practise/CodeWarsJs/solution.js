@@ -598,7 +598,7 @@ function anagrams(word, words) {
     }
     return biggestNum
   }
-  
+
   function getAverage(arr){
     return arr.reduce((a,b) => a + b) / arr.length
   }
@@ -617,12 +617,12 @@ function anagrams(word, words) {
     }
 
     var uniqueInOrder=function(iterable) {
-      return [...iterable].filter((a,index) => a !== iterable[index + 1]) 
+      return [...iterable].filter((a,index) => a !== iterable[index + 1] )
     }
 
     function highAndLow(numbers){
       const splitNumbers = numbers.split(' ')
-      
+
       return `${Math.max(...splitNumbers)} ${Math.min(...splitNumbers)}`
     }
 
@@ -653,8 +653,8 @@ function anagrams(word, words) {
       return array.map((x) => x % 2 ? oddNumbers.shift() : x);
       // Return a sorted array.
     }
-      
-    function sumStrings(a, b) { 
+
+    function sumStrings(a, b) {
      return (Number(a) + Number(b)).toString()
     }
 
@@ -662,7 +662,29 @@ function anagrams(word, words) {
      return (BigInt(a) * BigInt(b)).toString().replace('/^0+/', '')
     }
 
-console.log(multiply('10', '10'))
-// console.log(towerBuilder(11))
-// console.log(towerBuilder(5))
-// console.log(sortArray([]))
+    function countInversions(array) {
+      let result = 0;
+      for (let index = 0; index < array.length - 1; index++) {
+        for (let b = index; b < array.length - 1; b++) {
+          if ((array[b] + 1) === array[b+1]) {
+                continue
+              } else {
+                result++
+              }
+          }
+      }
+       return result
+    }
+
+  function balancedParens(n) {
+    if (n === 0) return ""
+    if (n === 1) return "()"
+  return [];
+
+  }
+
+console.log(balancedParens(0))
+console.log(balancedParens(1))
+console.log(balancedParens(2))
+console.log(balancedParens(3))
+console.log(balancedParens(4));
