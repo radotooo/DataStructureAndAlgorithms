@@ -255,7 +255,7 @@ var indSpecialInteger = function (arr) {
         !result[num] ? result[num] = 1 : result[num]++
     })
 
-    return Object.entries(result).find(([key, value]) => value > percentage)[0]
+    return Object.entries(result).find(([letter, value]) => value > percentage)[0]
 };
 
 var findNumbers = function (nums) {
@@ -328,7 +328,131 @@ var intersect = function (nums1, nums2) {
     return result
 };
 
-console.log(intersect([1, 2, 2, 1], [2, 2]))
-console.log(intersect([4, 9, 5], [9, 4, 9, 8, 4]))
+// 121. Best Time to Buy and Sell Stock
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function (prices) {
+    let maxValue = 0
+    let minValue = prices[0]
+
+    for (let i = 1; i < prices.length; i++) {
+        if (prices[i] < minValue) minValue = prices[i]
+        else if (prices[i] - minValue > maxValue) maxValue = prices[i] - minValue
+    }
+
+    return maxValue
+}
+
+/**
+ * @param {number[][]} mat
+ * @param {number} r
+ * @param {number} c
+ * @return {number[][]}
+ */
+var matrixReshape = function (mat, r, c) {
+    const row = mat.length
+    const col = mat[0].length
+
+    if (row * col !== r * c) return mat
+
+    let temp = []
+
+    return mat.flat().reduce((arr, el) => {
+        temp.push(el)
+        if (temp.length === c) {
+            arr.push(temp)
+            temp = []
+        }
+        return arr
+    }, []);
+}
+
+/**
+ * @param {number} numRows
+ * @return {number[][]}
+ */
+var generate = function (numRows) {
+    if (numRows === 1) return [[1]]
+    if (numRows === 2) return [[1], [1, 1]]
+    const result = [[1], [1, 1]]
+
+    for (let i = 1; i < numRows - 1; i++) {
+        const temp = []
+        for (let j = 0; j < result[i].length - 1; j++) {
+            temp.push(result[i][j] + result[i][j + 1])
+        }
+        result.push([1, ...temp, 1])
+    }
+
+    return result
+};
+
+/**
+ * @param {character[][]} board
+ * @return {boolean}
+ */
+var isValidSudoku = function (board) {
+    for (const [i, values] of board.entries()) {
+        let inside = []
+        for (const [k, value] of values.entries()) {
+
+            if (k % 3 === 0 && k !== 0) {
+                inside.push(" | ")
+            }
+            inside.push(value)
+        }
+        if (i % 3 === 0 && i !== 0) console.log('-'.repeat(25))
+        console.log(...inside);
+    }
+}
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var firstUniqChar = function (s) {
+    return s.indexOf([...s].find(c => s.indexOf(c) === s.lastIndexOf(c)))
+}
+
+/**
+ * @param {string} ransomNote
+ * @param {string} magazine
+ * @return {boolean}
+ */
+var canConstruct = function (s, t) {
+    for (const letter of s) {
+        console.error(s.length, t.length);
+        if (!t.includes(letter) || (s.length !== t.length)) return false
+        t = t.replace(letter, ' ')
+    }
+    return true
+};
+
+var search = function (nums, target) {
+
+};
+
+console.log(canConstruct("car", "rat"));
+console.log(canConstruct("anagram", "nagaram"));
+// console.log(isValidSudoku([["5", "3", ".", ".", "7", ".", ".", ".", "."]
+//     , ["6", ".", ".", "1", "9", "5", ".", ".", "."]
+//     , [".", "9", "8", ".", ".", ".", ".", "6", "."]`
+//     , ["8", ".", ".", ".", "6", ".", ".", ".", "3"]
+//     , ["4", ".", ".", "8", ".", "3", ".", ".", "1"]
+//     , ["7", ".", ".", ".", "2", ".", ".", ".", "6"]
+//     , [".", "6", ".", ".", ".", ".", "2", "8", "."]
+//     , [".", ".", ".", "4", "1", "9", ".", ".", "5"]
+//     , [".", ".", ".", ".", "8", ".", ".", "7", "9"]]))
+// console.log(isValidSudoku([["8", "3", ".", ".", "7", ".", ".", ".", "."]
+//     , ["6", ".", ".", "1", "9", "5", ".", ".", "."]
+//     , [".", "9", "8", ".", ".", ".", ".", "6", "."]
+//     , ["8", ".", ".", ".", "6", ".", ".", ".", "3"]
+//     , ["4", ".", ".", "8", ".", "3", ".", ".", "1"]
+//     , ["7", ".", ".", ".", "2", ".", ".", ".", "6"]
+//     , [".", "6", ".", ".", ".", ".", "2", "8", "."]
+//     , [".", ".", ".", "4", "1", "9", ".", ".", "5"]
+//     , [".", ".", ".", ".", "8", ".", ".", "7", "9"]]))
 // console.log(containsDuplicate([3,4,5,6,7,8,9,0]))
 
