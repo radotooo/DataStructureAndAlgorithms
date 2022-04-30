@@ -585,106 +585,126 @@ function anagrams(word, words) {
 }
 //best
 // words.filter(w => w.split('').sort().join('') === word.split('').sort().join('')); .....
-  function largestPairSum(arr){
+function largestPairSum(arr) {
 
-    let biggestNum = Number.NEGATIVE_INFINITY
-    for (let i = 0; i < arr.length; i++) {
-      for (let c = i+1; c < arr.length; c++) {
-        const num = arr[i] + arr[c]
-        if(num>biggestNum){
-          biggestNum = num
-        }
+  let biggestNum = Number.NEGATIVE_INFINITY
+  for (let i = 0; i < arr.length; i++) {
+    for (let c = i + 1; c < arr.length; c++) {
+      const num = arr[i] + arr[c]
+      if (num > biggestNum) {
+        biggestNum = num
       }
     }
-    return biggestNum
   }
+  return biggestNum
+}
 
-  function getAverage(arr){
-    return arr.reduce((a,b) => a + b) / arr.length
-  }
+function getAverage(arr) {
+  return arr.reduce((a, b) => a + b) / arr.length
+}
 
-  function filter_list(arr) {
-    return arr.filter(x => typeof(x) !== 'string' )
-  }
+function filter_list(arr) {
+  return arr.filter(x => typeof (x) !== 'string')
+}
 
-  function monkeyCount(n) {
-    return Array.from(Array(n+1).keys()).slice(1)
+function monkeyCount(n) {
+  return Array.from(Array(n + 1).keys()).slice(1)
+}
+
+function removeSmallest(numbers) {
+  numbers.splice(numbers.indexOf(Math.min(...numbers)), 1);
+  return numbers;
+}
+
+var uniqueInOrder = function (iterable) {
+  return [...iterable].filter((a, index) => a !== iterable[index + 1])
+}
+
+function highAndLow(numbers) {
+  const splitNumbers = numbers.split(' ')
+
+  return `${Math.max(...splitNumbers)} ${Math.min(...splitNumbers)}`
+}
+
+function expandedForm(num) {
+  return num.toString().split('').reduce((arr, value, index, numbers) => {
+    if (value > 0) {
+      const result = `${numbers[index]}${'0'.repeat(numbers.length - 1 - index)}`
+      arr.push(result)
     }
 
-    function removeSmallest(numbers) {
-     numbers.splice(numbers.indexOf(Math.min(...numbers)), 1);
-      return numbers;
-    }
+    return arr
+  }, []).join(' + ')
+}
 
-    var uniqueInOrder=function(iterable) {
-      return [...iterable].filter((a,index) => a !== iterable[index + 1] )
-    }
+function expandedForm2(num) {
+  return String(num)
+    .split("")
+    .map((num, index, arr) => num + "0".repeat(arr.length - index - 1))
+    .filter((num) => Number(num) != 0)
+    .join(" + ")
+}
 
-    function highAndLow(numbers){
-      const splitNumbers = numbers.split(' ')
+// Sort the odd
+function sortArray(array) {
+  let index = -1
+  const oddNumbers = array.filter((x) => x % 2).sort((a, b) => a - b)
+  console.log(oddNumbers)
+  return array.map((x) => x % 2 ? oddNumbers.shift() : x);
+  // Return a sorted array.
+}
 
-      return `${Math.max(...splitNumbers)} ${Math.min(...splitNumbers)}`
-    }
+function sumStrings(a, b) {
+  return (Number(a) + Number(b)).toString()
+}
 
-    function expandedForm(num) {
-      return num.toString().split('').reduce((arr, value, index, numbers) => {
-        if (value > 0) {
-          const result = `${ numbers[index] }${ '0'.repeat(numbers.length - 1 -index) }`
-          arr.push(result)
-        }
+function multiply(a, b) {
+  return (BigInt(a) * BigInt(b)).toString().replace('/^0+/', '')
+}
 
-        return arr
-      }, []).join(' + ')
-    }
-
-    function expandedForm2(num) {
-      return String(num)
-              .split("")
-              .map((num, index, arr) => num + "0".repeat(arr.length - index -1 ))
-              .filter((num) => Number(num) != 0)
-              .join(" + ")
-    }
-
-    // Sort the odd
-    function sortArray(array) {
-      let index = -1
-      const oddNumbers = array.filter((x) =>  x % 2 ).sort((a,b) => a-b)
-      console.log(oddNumbers)
-      return array.map((x) => x % 2 ? oddNumbers.shift() : x);
-      // Return a sorted array.
-    }
-
-    function sumStrings(a, b) {
-     return (Number(a) + Number(b)).toString()
-    }
-
-    function multiply(a, b) {
-     return (BigInt(a) * BigInt(b)).toString().replace('/^0+/', '')
-    }
-
-    function countInversions(array) {
-      let result = 0;
-      for (let index = 0; index < array.length - 1; index++) {
-        for (let b = index; b < array.length - 1; b++) {
-          if ((array[b] + 1) === array[b+1]) {
-                continue
-              } else {
-                result++
-              }
-          }
+function countInversions(array) {
+  let result = 0;
+  for (let index = 0; index < array.length - 1; index++) {
+    for (let b = index; b < array.length - 1; b++) {
+      if ((array[b] + 1) === array[b + 1]) {
+        continue
+      } else {
+        result++
       }
-       return result
     }
+  }
+  return result
+}
 
-  function balancedParens(n) {
-    if (n === 0) return ""
-    if (n === 1) return "()"
+function balancedParens(n) {
+  if (n === 0) return ""
+  if (n === 1) return "()"
   return [];
 
-  }
+}
 
-console.log(balancedParens(0))
-console.log(balancedParens(1))
-console.log(balancedParens(2))
-console.log(balancedParens(3))
-console.log(balancedParens(4));
+function getCount(str) {
+  const vowels = ['a', 'e', 'i', 'o', 'u']
+
+  return str.split('').filter(x => vowels.includes(x)).length
+}
+
+function sortByBinaryOnes(list) {
+  const result = list.map(x => {
+    const binary = (x).toString(2)
+
+    return { value: x, binaryLength: binary.length, onesLength: binary.replace(/0/g, '') };
+  })
+
+  return result.sort((a, b) =>
+    b.onesLength - a.onesLength ||
+    a.binaryLength - b.binaryLength ||
+    a.value - b.value
+  ).map(x => x.value)
+}
+
+function solution(collection) {
+  // TODO: complete
+}
+
+console.log(solution([1, 3, 6, 8, 9, 11, 16, 63, 70])) // returns true
