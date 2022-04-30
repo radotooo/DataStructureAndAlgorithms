@@ -424,35 +424,26 @@ var firstUniqChar = function (s) {
 var canConstruct = function (s, t) {
     for (const letter of s) {
         console.error(s.length, t.length);
-        if (!t.includes(letter) || (s.length !== t.length)) return false
+        if (!t.includes(letter) || (s``.length !== t.length)) return false
         t = t.replace(letter, ' ')
     }
     return true
 };
 
 var search = function (nums, target) {
+    const num = binarySearch2(nums, target)
 
+    return num !== undefined ? nums.indexOf(num) : -1
 };
 
-console.log(canConstruct("car", "rat"));
-console.log(canConstruct("anagram", "nagaram"));
-// console.log(isValidSudoku([["5", "3", ".", ".", "7", ".", ".", ".", "."]
-//     , ["6", ".", ".", "1", "9", "5", ".", ".", "."]
-//     , [".", "9", "8", ".", ".", ".", ".", "6", "."]`
-//     , ["8", ".", ".", ".", "6", ".", ".", ".", "3"]
-//     , ["4", ".", ".", "8", ".", "3", ".", ".", "1"]
-//     , ["7", ".", ".", ".", "2", ".", ".", ".", "6"]
-//     , [".", "6", ".", ".", ".", ".", "2", "8", "."]
-//     , [".", ".", ".", "4", "1", "9", ".", ".", "5"]
-//     , [".", ".", ".", ".", "8", ".", ".", "7", "9"]]))
-// console.log(isValidSudoku([["8", "3", ".", ".", "7", ".", ".", ".", "."]
-//     , ["6", ".", ".", "1", "9", "5", ".", ".", "."]
-//     , [".", "9", "8", ".", ".", ".", ".", "6", "."]
-//     , ["8", ".", ".", ".", "6", ".", ".", ".", "3"]
-//     , ["4", ".", ".", "8", ".", "3", ".", ".", "1"]
-//     , ["7", ".", ".", ".", "2", ".", ".", ".", "6"]
-//     , [".", "6", ".", ".", ".", ".", "2", "8", "."]
-//     , [".", ".", ".", "4", "1", "9", ".", ".", "5"]
-//     , [".", ".", ".", ".", "8", ".", ".", "7", "9"]]))
-// console.log(containsDuplicate([3,4,5,6,7,8,9,0]))
+var binarySearch2 = function (nums, target) {
+    if (!nums.length) return;
 
+    const middle = Math.floor(nums.length / 2)
+    const num = nums[middle];
+
+    if (nums[middle] === target) return target
+
+    if (num > target) return binarySearch2(nums.slice(0, middle), target)
+    else return binarySearch2(nums.slice(middle + 1), target)
+};
