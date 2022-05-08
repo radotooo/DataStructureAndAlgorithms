@@ -447,3 +447,21 @@ var binarySearch2 = function (nums, target) {
     if (num > target) return binarySearch2(nums.slice(0, middle), target)
     else return binarySearch2(nums.slice(middle + 1), target)
 };
+
+function diamond(n) {
+    if (n <= 0 || n % 2 === 0) return null;
+
+    let result = ''
+
+    for (let index = 0; index < n; index += 2) {
+        result += ' '.repeat((n - index) / 2) + '*'.repeat(index + 1) + '\n'
+    }
+
+    for (let index = n - 2; index > 0; index -= 2) {
+        result += ' '.repeat((n - index) / 2) + '*'.repeat(index) + '\n'
+    }
+
+    return result
+}
+
+console.error(diamond(5));
