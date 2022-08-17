@@ -707,4 +707,15 @@ function solution(collection) {
   // TODO: complete
 }
 
-console.log(solution([1, 3, 6, 8, 9, 11, 16, 63, 70])) // returns true
+
+function dontGiveMeFive(start, end) {
+  let count = 0;
+
+  for (let i = start; i <= end; ++i)
+    if (!i.toString().includes('5'))
+      count++;
+
+  return count;
+}
+
+console.log(dontGiveMeFive(1, 9)) // returns true

@@ -464,4 +464,37 @@ function diamond(n) {
     return result
 }
 
-console.error(diamond(5));
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var missingNumber = function (nums) {
+    const expected = Array.from({ length: nums.length + 1 }, (_, i) => i).reduce((a, b) => a + b)
+    const calc = nums.reduce((a, b) => a + b)
+
+    return expected - calc
+};
+
+var isValid = function (s) {
+    const oposite = {
+        ')': "(",
+        ']': '[',
+        '}': '{'
+    }
+
+    const stack = []
+
+    s.split('').forEach(x => {
+
+        if (oposite[x] && oposite[x] === stack[stack.length - 1]) {
+            stack.pop()
+        } else stack.push(x)
+        console.error(stack[stack.length - 1], oposite[x], x, stack);
+    })
+
+    return !stack.length
+
+};
+
+console.error(isValid('(){}{}[]'));
+console.error(isValid('(){}{)[]'));
