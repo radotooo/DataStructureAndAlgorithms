@@ -182,5 +182,31 @@ function fillImage(image, sr, sc, color, newColor) {
     fillImage(image, sr - 1, sc, color, newColor);
 }
 
-// console.error(floodFill([[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 2))
-console.error(floodFill([[0, 0, 0], [0, 0, 0]], 1, 0, 2))
+
+var maxSubArray = function(nums) {
+};
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+
+/**
+ * @param {TreeNode} root
+ * @param {TreeNode} p
+ * @param {TreeNode} q
+ * @return {TreeNode}
+ */
+var lowestCommonAncestor = function(root, p, q) {
+    if (p.val < root.val && q.val < root.val) {
+        return lowestCommonAncestor(root.left, p, q);
+    } else if (p.val > root.val && q.val > root.val) {
+        return lowestCommonAncestor(root.right, p, q);
+    } else {
+        return root;
+    }
+};
+
