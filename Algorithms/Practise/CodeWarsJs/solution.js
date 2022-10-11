@@ -69,7 +69,7 @@ function toCamelCase(str) {
 //*      return match.charAt(1).toUpperCase();
 //* });
 //! Moving Zeros To The End
-var moveZeros = function (arr) {
+var moveZeros = function(arr) {
   return arr.filter((x) => x !== 0).concat(arr.filter((x) => x === 0));
 };
 
@@ -187,14 +187,14 @@ function halvingSum(n) {
 }
 //console.log(halvingSum(25));
 let sum = 0;
-var fib = function (N) {
+var fib = function(N) {
   if (N <= 1) {
     return 1;
   }
 
   return fib(N - 1) + fib(N - 2);
 };
-var fib2 = function (N) {
+var fib2 = function(N) {
   if (N < 1) {
     return n;
   }
@@ -315,26 +315,26 @@ function sumOFPairs0n(ints, s) {
 }
 
 //! Array Helpers
-Array.prototype.square = function () {
+Array.prototype.square = function() {
   return this.map((x) => x * x);
 };
-Array.prototype.cube = function () {
+Array.prototype.cube = function() {
   return this.map((x) => x * x * x);
 };
-Array.prototype.average = function () {
+Array.prototype.average = function() {
   if (this === undefined || this.length == 0) {
     return NaN;
   }
   console.log(this.reduce((a, b) => a + b));
   return this.reduce((a, b) => a + b) / this.length;
 };
-Array.prototype.sum = function () {
+Array.prototype.sum = function() {
   return this.reduce((a, b) => a + b);
 };
-Array.prototype.even = function () {
+Array.prototype.even = function() {
   return this.filter((x) => x % 2 == 0);
 };
-Array.prototype.odd = function () {
+Array.prototype.odd = function() {
   return this.filter((x) => x % 2 == 1);
 };
 
@@ -534,7 +534,7 @@ function findOutlier(integers) {
   return even.length === 1 ? even[0] : odd[0];
 }
 
-var number = function (busStops) {
+var number = function(busStops) {
   return busStops.reduce((a, b) => {
     a += b[0];
     a -= b[1];
@@ -616,7 +616,7 @@ function removeSmallest(numbers) {
   return numbers;
 }
 
-var uniqueInOrder = function (iterable) {
+var uniqueInOrder = function(iterable) {
   return [...iterable].filter((a, index) => a !== iterable[index + 1])
 }
 
@@ -707,7 +707,6 @@ function solution(collection) {
   // TODO: complete
 }
 
-
 function dontGiveMeFive(start, end) {
   let count = 0;
 
@@ -717,5 +716,3 @@ function dontGiveMeFive(start, end) {
 
   return count;
 }
-
-console.log(dontGiveMeFive(1, 9)) // returns true
